@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+
+        .column {
+          column-count: 2;
+        }
+
+        .card {
+          box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+          transition: 0.3s;
+          width: 140%;
+          border-radius: 5px;
+        }
+
+        .card:hover {
+          box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+        .container {
+          padding: 16px;
+        }
+        </style>
+</head>
+{% extends "buyerLayout.html" %}
+{% block content %}
+<div>
+    <br>
+    <center><h1>PROFILE</h1></center>
+</div>
+<br><br>
+<center>
+        <div class="col-md-6">
+            <center>
+                <div class="card col d-flex justify-content-center">
+                    <div class="container">
+                        <center style="margin-top: 20px">
+                            <img src="static/Icons/user.png" style="height:100px;">
+                        </center>
+                        <br>
+                        <p style="font-size: 30px;"><u>Personal Details</u></p>
+                        <div style="margin-top:30px;">
+                            <label>Username:</label>&nbsp<label>{{ data[0] }}</label>
+                                <br><br>
+                            <label>Email Address:</label>&nbsp<label>{{ data[1] }}</label>
+                                <br><br>
+                            <label>Contact Number:</label>&nbsp<label>{{ data[2] }}</label>
+                                <br><br>
+                            <label>Income:</label>&nbsp<label>${{ data[3] }}</label>
+                        </div>
+                    </div>
+                    <br>
+                    <center>
+                        <a href="{{ url_for('buyerEditProfile') }}" style="text-decoration:none;">
+                            <button type="button" class="btn mb-4"
+                                style="width: 100px; font-family: sans-serif; background-color: #616E78; color:#FFFFFF">Edit
+                            </button>
+                        </a>
+                    </center>
+                </div>
+            </center>
+        </div>
+</center>
+<br><br><br>
+{% endblock content %}
+</html>

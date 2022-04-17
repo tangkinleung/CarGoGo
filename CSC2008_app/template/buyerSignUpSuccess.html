@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Sign up success</title>
+</head>
+<body style="background: url('static/Icons/background.jpg') no-repeat fixed center; background-size: cover;">
+<br><br>
+<div class="card text-dark" style="width:72%; margin-left:14.5%; box-shadow: 0 40px 100px 300px rgba(0, 0, 0, 0.2)">
+    <div class="card-body text-center">
+        <div class="content-section text-center">
+            <div class="pt-4"></div>
+            <img src="static/Icons/success.png" style="width:6.5%">
+            <br><br><br>
+            <span style="font-size: 20px; font-family: sans-serif"><center>You've successfully registered for an account as a buyer!</center></span>
+            <br><br>
+            <a href="{{ url_for('signInOptions') }}" style="text-decoration:none;">
+                <button type="button" class="btn"
+                        style="font-family: sans-serif; margin-left:1%; background-color:#616E78; color:#FFFFFF">Sign In</button>
+            </a>
+            <a href="/">
+                <button type="button" class="btn"
+                        style="font-family: sans-serif; margin-left:1%; background-color:#616E78; color:#FFFFFF">Back</button>
+            </a>
+        </div>
+        <br>
+    </div>
+</div>
+</body>
+</html>

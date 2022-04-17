@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Create Listing</title>
+</head>
+{% extends "sellerLayout.html" %}
+{% block content %}
+<br><br>
+<div class="card bg-light text-dark" style="width:56%; margin-left:23%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
+    <div class="card-body text-center">
+        <br><br>
+        <center><h1 style="font-family: sans-serif;">CREATE LISTING</h1></center>
+        <br><br>
+        <form style="margin-left: 60px" method="post">
+          <div class="form-group">
+            <div class="row">
+                <label style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Model</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputModel" placeholder="Model" name="model">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputVehicleType" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Vehicle Type</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputVehicleType" name="vehicleType" placeholder="Vehicle Type">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputManufacture" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Manufacture</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputManufacture" name="manufacturer" placeholder="Manufacture">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputFuelType" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Fuel Type</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputFuelType" name="fuelType" placeholder="Fuel Type">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputMileage" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Mileage</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="tel" class="form-control" id="inputMileage" name="mileage" placeholder="Mileage">
+            </div>
+          </div>
+            <div class="form-group">
+            <div class="row">
+                <label for="inputColour" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Colour</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputColour" name="colour" placeholder="Colour">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputTransmission" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Transmission</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputTransmission" name="transmission" placeholder="Mileage">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputConsumption" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Consumption</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="tel" class="form-control" id="inputConsumption" name="consumption" placeholder="Consumption">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputDepreciation" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Depreciation</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="tel" class="form-control" id="inputDepreciation" name="depreciation" placeholder="Depreciation">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputCOE" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">COE Left</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="tel" class="form-control" id="inputCOE" name="coe" placeholder="COE Left">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputCondition" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Condition</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputCondition" name="condition" placeholder="Condition">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputPrice" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Price</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputPrice" name="price" placeholder="Price">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Available</label>
+            </div>
+            <div style="float:left">
+              <input type="radio" style="margin-left: 15px;" id="inputAvailable" name="checkAvailable" value="1">
+                <label for="inputAvailable">Yes</label>
+              <input type="radio" style="margin-left: 20px;" name="checkAvailable" value="0">
+                <label for="inputAvailable">No</label>
+            </div>
+          </div>
+            <br><br>
+                <button type="submit" class="btn mr-5" style="margin-right: 42px; font-family: sans-serif; background-color: #616E78; color:#FFFFFF">Create</button>
+            <a href="{{ url_for('sellerHome') }}" style="text-decoration:none;">
+                <button type="button" class="btn ml-5" style="margin-right: 42px; font-family: sans-serif; background-color: #616E78; color:#FFFFFF">Cancel</button>
+            </a>
+        </form>
+        <br>
+    </div>
+</div>
+<br><br>
+{% endblock content %}
+</html>

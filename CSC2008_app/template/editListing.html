@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Edit Listing</title>
+</head>
+<br><br>
+<body style="background: url('static/Icons/background3.jpg') no-repeat fixed center; background-size: cover;">
+<div class="card bg-light text-dark" style="width:56%; margin-left:23%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
+    <div class="card-body text-center">
+        <br><br>
+        <center><h1 style="font-family: sans-serif;">EDIT LISTING</h1></center>
+        <br><br>
+        <form style="margin-left: 60px" method="post" action="{{ url_for('confirmListing', vehicleId = data[14]) }}">
+          <div class="form-group">
+            <div class="row">
+                <label style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Model</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputModel" placeholder="Model" name="model" value="{{ data[1] }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputVehicleType" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Vehicle Type</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputVehicleType" placeholder="Vehicle Type" name="vehicleType" value="{{ data[2] }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputManufacture" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Manufacturer</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputManufacture" placeholder="Manufacturer" name="manufacturer" value="{{ data[0] }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputFuelType" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Fuel Type</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputFuelType" placeholder="Fuel Type" name="fuelType" value="{{ data[4] }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputMileage" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Mileage</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="tel" class="form-control" id="inputMileage" placeholder="Mileage" name="mileage" value="{{ data[5] }}">
+            </div>
+          </div>
+            <div class="form-group">
+            <div class="row">
+                <label for="inputColour" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Colour</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputColour" placeholder="Colour" name="colour" value="{{ data[7] }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputTransmission" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Transmission</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputTransmission" placeholder="Transmission" name="transmission" value="{{ data[6] }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputConsumption" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Consumption</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="tel" class="form-control" id="inputConsumption" placeholder="Consumption" name="consumption" value="{{ data[12] }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputDepreciation" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Depreciation</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="tel" class="form-control" id="inputDepreciation" placeholder="Depreciation" name="depreciation" value="{{ data[11] }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputCOE" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">COE Left</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="tel" class="form-control" id="inputCOE" placeholder="COE Left" name="coeLeft" value="{{ data[10] }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputCondition" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Condition</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputCondition" placeholder="Condition" name="condition" value="{{ data[3] }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputPrice" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Price</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputPrice" placeholder="Price" name="price" value="{{ data[8] }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+                <label for="inputAvailable" style="padding-right: 40px; display: block; margin-left:39px; font-family: sans-serif;">Available</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="tel" class="form-control" id="inputAvailable" placeholder="Available" name="available" value="{{ data[9] }}">
+            </div>
+          </div>
+            <br><br>
+            <a style="text-decoration:none;">
+                <button type="submit" class="btn mr-5" style="margin-right: 42px; font-family: sans-serif; background-color: #616E78; color:#FFFFFF">Edit</button>
+            </a>
+            <a href="{{ url_for('sellerHome') }}" style="text-decoration:none;">
+                <button type="button" class="btn ml-5" style="margin-right: 42px; font-family: sans-serif; background-color: #616E78; color:#FFFFFF">Cancel</button>
+            </a>
+        </form>
+        <br>
+    </div>
+</div>
+</body>
+<br><br>
+</html>

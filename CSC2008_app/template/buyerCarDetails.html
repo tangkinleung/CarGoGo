@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Edit Listing</title>
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+
+        .word {
+          font-size: 25px;
+        }
+
+    </style>
+</head>
+{% extends "buyerLayout.html" %}
+{% block content %}
+<br><br>
+<form method="post" action="{{ url_for('purchaseCar', buyerId= info[0], vehicleId= info[1], sellerId= info[2], cardealerId = info[3]) }}">
+    <div class="container">
+        <div class="vh-100 d-flex justify-content-center align-items-center">
+            <div class="form-group col-sm-8" style="">
+              <img class="card-img-top" src="{{url_for('static', filename='Images/car1.jpg')}}" alt="Card image cap">
+            </div>
+            <div class="form-group col-sm-8 my-auto">
+                <div>
+                    <p class="text-center word" >Manufacturer:<strong id ="manufacturer">&nbsp{{ data[0] }}</strong></p>
+                </div>
+                <br><br>
+                <div>
+                    <p class="text-center word" >Vehicle Model:<strong id =" vehicleModel ">&nbsp{{ data[1] }}</strong></p>
+                </div>
+                    <br><br>
+                <div>
+                    <p class="text-center word" >Vehicle Type:<strong id =" vehicleType ">&nbsp{{ data[2] }}</strong></p>
+                </div>
+                <br><br>
+                <div>
+                    <p class="text-center word" >Vehicle Condition:<strong id =" vehicleCondition ">&nbsp{{ data[3] }}</strong></p>
+                </div>
+                <br><br>
+                <div>
+                    <p class="text-center word" >Fuel Type:<strong id =" fuelType ">&nbsp{{ data[4] }}</strong></p>
+                </div>
+                    <br><br>
+                <div>
+                    <p class="text-center word" >Mileage:<strong id =" mileage ">&nbsp{{ data[5] }}</strong></p>
+                </div>
+                <br><br>
+                <div>
+                    <p class="text-center word" >Transmission:<strong id =" transmission ">&nbsp{{ data[6] }}</strong></p>
+                </div>
+                    <br><br>
+                <div>
+                    <p class="text-center word" >Colour:<strong id =" color ">&nbsp{{ data[7] }}</strong></p>
+                </div>
+                <br><br>
+                <div>
+                    <p class="text-center word" >Price:<strong id =" price ">&nbsp{{ data[8] }}</strong></p>
+                </div>
+                    <br><br>
+                <div>
+                    <p class="text-center word" >COE Left:<strong id =" coeLeft ">&nbsp{{ data[10] }}</strong></p>
+                </div>
+                    <br><br>
+                <div>
+                    <p class="text-center word" >Depreciation:<strong id =" depreciation ">&nbsp{{ data[11] }}</strong></p>
+                </div>
+                    <br><br>
+                <div>
+                    <p class="text-center word" >Mileage Consumption:<strong id =" mileageConsumption ">&nbsp{{ data[12] }}</strong></p>
+                </div>
+                    <br><br>
+                <center>
+                    <button type="submit" class="btn"
+                        style="font-family: sans-serif; background-color: #616E78; color:#FFFFFF">PURCHASE CAR
+                    </button>
+                </center>
+            </div>  
+        </div>
+      </div>
+</form>
+<br><br>
+{% endblock content %}
+</html>

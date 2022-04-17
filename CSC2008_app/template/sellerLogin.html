@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Seller Login</title>
+</head>
+<br><br>
+<body style="background: url('static/Icons/background.jpg') no-repeat fixed center; background-size: cover;">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p class="alert alert-{{ category }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+<div class="card bg-light text-dark" style="width:52%; margin-left:24%; box-shadow: 0 40px 100px 300px rgba(0, 0, 0, 0.2)">
+    <div class="card-body text-center">
+        <br><br>
+        <center><h1 style="font-family: sans-serif;">SELLER SIGN IN</h1></center>
+        <br><br>
+        <form method="post">
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label" style="font-family: sans-serif;">Username</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputUsername" placeholder="Username" name="username">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label" style="font-family: sans-serif;">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
+            </div>
+          </div>
+            <br><br>
+            <button type="submit" class="btn mr-4" style="font-family: sans-serif; background-color: #616E78; color:#FFFFFF">Sign in</button>
+            <a href="/">
+                <button type="button" class="btn ml-4" style="font-family: sans-serif; background-color: #616E78; color:#FFFFFF">Cancel</button>
+            </a>
+        </form>
+        <br>
+    </div>
+</div>
+</body>
+<br><br>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="/static/script.js"></script>
+    <title>Buyer Home</title>
+
+  <style>
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+      max-width: 400px;
+      text-align: center;
+      font-family: arial;
+      margin-top:20px;
+    }
+
+    .price {
+      color: grey;
+      font-size: 22px;
+    }
+
+    .card button {
+      border: none;
+      outline: 0;
+      padding: 12px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+    }
+
+    .card button:hover {
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+{% extends "buyerLayout.html" %}
+{% block content %}
+<br><br>
+    <!-- Example single button -->
+<div class="d-flex justify-content-center">
+   <div class="btn-group">
+      <button type="button" class="btn btn-info btn-lg dropdown-toggle mr-3" id = "VehicleDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Vehicle Model
+      </button>
+      <div class="dropdown-menu" aria-labelledby="VehicleDropDown">
+          {% for carModel in model %}
+          <form method="post" action="{{ url_for('filterModel', modelSelected = carModel) }}">
+            <button class="dropdown-item">{{ carModel }}</button>
+          </form>
+          {% endfor %}
+      </div>
+    </div>
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-info btn-lg dropdown-toggle mr-3" id = "fuelTypeDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Fuel Type
+      </button>
+      <div class="dropdown-menu" aria-labelledby="fuelTypeDropDown">
+          {% for carFuelType in fuelType %}
+          <form method="post" action="{{ url_for('filterFuelType', fuelTypeSelected = carFuelType) }}">
+                <button class="dropdown-item">{{ carFuelType }}</button>
+          </form>
+          {% endfor %}
+      </div>
+    </div>
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-info btn-lg dropdown-toggle mr-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Vehicle Type
+      </button>
+      <div class="dropdown-menu">
+          {% for carVehicleType in vehicleType %}
+          <form method="post" action="{{ url_for('filterVehicleType', vehicleTypeSelected = carVehicleType) }}">
+              <button class="dropdown-item">{{ carVehicleType }}</button>
+          </form>
+          {% endfor %}
+      </div>
+    </div>
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-info btn-lg dropdown-toggle mr-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Colours<span class="caret"></span>
+      </button>
+      <div class="dropdown-menu">
+          {% for carColour in colours %}
+          <form method="post" action="{{ url_for('filterColours', colourSelected = carColour) }}">
+              <button class="dropdown-item">{{ carColour }}</button>
+          </form>
+          {% endfor %}
+      </div>
+    </div>
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-info btn-lg dropdown-toggle mr-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Price<span class="caret"></span>
+      </button>
+      <div class="dropdown-menu">
+          {% for carPrice in price %}
+          {% set min,max = carPrice.split('to') %}
+          <form method="post" action="{{ url_for('filterPrice', minPriceSelected = min, maxPriceSelected= max) }}">
+              <button class="dropdown-item">{{ carPrice }}</button>
+          </form>
+          {% endfor %}
+      </div>
+    </div>
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-info btn-lg dropdown-toggle mr-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Vehicle Mileage<span class="caret"></span>
+      </button>
+      <div class="dropdown-menu">
+        {% for carMileage in mileage %}
+        {% set min,max = carMileage.split('to') %}
+          <form method="post" action="{{ url_for('filterMileage', minMileageSelected = min, maxMileageSelected= max) }}">
+            <button class="dropdown-item">{{ carMileage }}</button>
+          </form>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-info btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Highest Mileage Consumption
+      </button>
+      <div class="dropdown-menu" aria-labelledby="VehicleDropDown">
+          {% for carMileageConsumption in mileageConsumption %}
+          <form method="post" action="{{ url_for('filterMileageConsumption', manufacturerSelected = carMileageConsumption) }}">
+            <button class="dropdown-item">{{ carMileageConsumption }}</button>
+          </form>
+          {% endfor %}
+      </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center">
+<a href="{{ url_for('buyerHome') }}" style="text-decoration:none; margin-top:20px;">
+            <button type="button" class="btn btn-lg ml-2"
+                    style="font-family: sans-serif; background-color: #616E78; color:#FFFFFF">Clear filter</button>
+        </a>
+</div>
+<br><br>
+{% for row in data %}
+<div class="row" style="float:left; margin-left:80px">
+    <div class="col">
+        <div class="card">
+            <img src="{{url_for('static', filename='Images/car1.jpg')}}" alt="Denim Jeans" style="width:100%">
+              <center>
+                  <h1>{{ row[0] }}&nbsp{{ row[1] }}</h1>
+                  <p class="price">${{ row[2] }}</p>
+                  <p class="fuelType">Fuel Type:&nbsp{{ row[4] }}</p>
+                  <p class="vehicleType">Vehicle Type:&nbsp{{ row[5] }}</p>
+                  <p class="colours">Colour:&nbsp{{ row[6] }}</p>
+                  <p class="mileage">Mileage:&nbsp{{ row[7] }}&nbspkm</p>
+                  <p class="mileageConsumption">Mileage Consumption:&nbsp{{ row[9] }}</p>
+              </center>
+            <form method="post" action="{{ url_for('buyerCarDetails', vehicleId = row[3], sellerId = row[8]) }}">
+                <button name="viewCarDetails" value="view">View Details</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</html>
+{% endblock content %}

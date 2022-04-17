@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <title>Car Dealer Review</title>
+
+    <style>
+        input[type='number'] {
+            -moz-appearance:textfield;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+    </style>
+</head>
+{% extends "sellerLayout.html" %}
+{% block content %}
+<div>
+    <br>
+    <center><h1>CAR DEALER REVIEWS</h1></center>
+</div>
+<br><br>
+<div class="d-flex justify-content-center">
+    <div class="btn-group ml-5">
+        <button type="button" class="btn btn-info btn-lg dropdown-toggle mr-3" id = "CompanyDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Company Name
+        </button>
+        <div class="dropdown-menu" aria-labelledby="VehicleDropDown">
+          {% for sortFilter in filter %}
+          <form method="post" action="{{ url_for('filterCompanyName', sortSelected = sortFilter) }}">
+            <button class="dropdown-item">{{ sortFilter }}</button>
+          </form>
+          {% endfor %}
+        </div>
+    </div>
+    <div class="btn-group ml-2">
+        <button type="button" class="btn btn-info btn-lg dropdown-toggle mr-3" id = "RatingDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Rating
+        </button>
+        <div class="dropdown-menu" aria-labelledby="VehicleDropDown">
+          {% for cardealerRating in rating %}
+            {% set min,max = cardealerRating.split('to') %}
+          <form method="post" action="{{ url_for('filterRating', minRatingSelected = min, maxRatingSelected= max) }}">
+            <button class="dropdown-item">{{ cardealerRating }}</button>
+          </form>
+          {% endfor %}
+        </div>
+    </div>
+    <div class="btn-group ml-2">
+        <button type="button" class="btn btn-info btn-lg dropdown-toggle mr-3" id = "ExperienceDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Experience
+        </button>
+        <div class="dropdown-menu" aria-labelledby="VehicleDropDown">
+          {% for experience in filterExperience %}
+          <form method="post" action="{{ url_for('filterExperience', experienceSelected = experience) }}">
+            <button class="dropdown-item">{{ experience }}</button>
+          </form>
+          {% endfor %}
+        </div>
+    </div>
+    <a href="{{ url_for('carDealerReview') }}" style="text-decoration:none;">
+            <button type="button" class="btn btn-lg ml-2"
+                    style="font-family: sans-serif; background-color: #616E78; color:#FFFFFF">Clear filter</button>
+        </a>
+</div>
+<!--<div style="margin-left:10.5%">-->
+<!--    <div style="margin-left:10px; float: right; width:21%">-->
+<!--        <label style="font-family: sans-serif; text-align: right; clear: both; float:left; margin-right:15px; margin-top: 4px;">Experience:</label>-->
+<!--        <input type="number" class="form-control" style="width:23%; height:45%; float:left; margin-right:15px;" id="expMin" name="expMin" placeholder="Min" min="1" max="10">-->
+<!--        <input type="number" class="form-control" style="width:23%; height:45%;" id="expMax" name="expMax" placeholder="Max" min="1" max="10">-->
+<!--    </div>-->
+<!--    <div style="margin-left:15px; float: right;">-->
+<!--        <label style="font-family: sans-serif; text-align: right; clear: both; float:left; margin-right:15px; margin-top: 4px;">Rating:</label>-->
+<!--        <input type="number" class="form-control" style="width:24%; height:45%; float:left; margin-right:15px;" id="ratingMin" name="ratingMin" placeholder="Min" min="1" max="10">-->
+<!--        <input type="number" class="form-control" style="width:24%; height:45%;" id="ratingMax" name="ratingMax" placeholder="Max" min="1" max="10">-->
+<!--    </div>-->
+
+<!--    </div>-->
+<br><br><br>
+    <table id="example" class="table table-bordered" style="width:98%; font-family: sans-serif" align="center">
+        <tr>
+            {% for header in headings %}
+            <th>{{ header }}</th>
+            {% endfor %}
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[4] }}</td>
+            <td>{{ row[5] }}</td>
+            <td>
+                <center>
+                    <button type="submit" class="btn" data-toggle="modal" data-target="#selectCarDealer{{ row[6] }}" style="font-size: 12px;
+                    font-family: sans-serif; background-color: #616E78; color:#FFFFFF">SELECT</button>
+                </center>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+<!-- Modal -->
+{% for row in data %}
+<div class="modal fade" id="selectCarDealer{{ row[6] }}" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form method="post" action="{{ url_for('chooseCarDealer', cardealerId=row[6]) }}">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <center><img src="static/Icons/alert.png" style="width:12%"></center>
+                    <br>
+                    <center><p>Do you want to select this car dealer?</p></center>
+                </div>
+                <div class="modal-footer">
+<!--                    <a href="{{ url_for('sellerHome') }}">-->
+                        <input type="submit" class="btn btn-danger" value="Yes">
+<!--                    </a>-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<!--<script>-->
+<!--    $('#ratingMin, #ratingMax').keyup(function() {-->
+<!--       var min = parseInt( $('#ratingMin').val(), 10 );-->
+<!--       var max = parseInt( $('#ratingMax').val(), 10 );-->
+<!--       $('#example tbody tr').each(function() {-->
+<!--        var age = parseFloat( $('td:eq(4)', this).text() ) || 0;-->
+<!--        if (( isNaN( min ) && isNaN( max )) ||-->
+<!--             ( isNaN( min ) && age <= max ) ||-->
+<!--             ( min <= age   && isNaN( max )) ||-->
+<!--             ( min <= age   && age <= max )) {-->
+<!--            $(this).show()-->
+<!--         } else {-->
+<!--            $(this).hide()-->
+<!--         }-->
+<!--       })-->
+<!--    });-->
+
+<!--    $('#expMin, #expMax').keyup(function() {-->
+<!--       var min = parseInt( $('#expMin').val(), 10 );-->
+<!--       var max = parseInt( $('#expMax').val(), 10 );-->
+<!--       $('#example tbody tr').each(function() {-->
+<!--        var age = parseFloat( $('td:eq(5)', this).text() ) || 0;-->
+<!--        if (( isNaN( min ) && isNaN( max )) ||-->
+<!--             ( isNaN( min ) && age <= max ) ||-->
+<!--             ( min <= age   && isNaN( max )) ||-->
+<!--             ( min <= age   && age <= max )) {-->
+<!--            $(this).show()-->
+<!--         } else {-->
+<!--            $(this).hide()-->
+<!--         }-->
+<!--       })-->
+<!--    });-->
+<!--</script>-->
+{% endblock content %}
+</html>

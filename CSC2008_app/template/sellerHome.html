@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Home</title>
+
+    <style>
+        button {
+        background-color: transparent;
+        background-repeat: no-repeat;
+        border: none;
+        cursor: pointer;
+        overflow: hidden;
+        outline: none;
+    }
+
+    </style>
+</head>
+
+{% extends "sellerLayout.html" %}
+{% block content %}
+<br><br>
+<div>
+    <a href="{{ url_for('createListing') }}" style="text-decoration:none;">
+        <button type="button" class="btn ml-4"
+                style="font-family: sans-serif; background-color: #616E78; color:#FFFFFF">CREATE LISTING
+        </button>
+    </a>
+    <a href="{{ url_for('carDealerReview') }}" style="text-decoration:none;">
+        <button type="button" class="btn mr-4"
+                style="float: right; font-family: sans-serif; background-color: #616E78; color:#FFFFFF">VIEW CAR DEALERS
+        </button>
+    </a>
+</div>
+<br><br>
+<table class="table table-bordered" style="width:99.6%; font-family: sans-serif" align="center">
+    <tr>
+        {% for header in headings %}
+        <th>{{ header }}</th>
+        {% endfor %}
+    </tr>
+    {% for row in data %}
+    <tr>
+        <td>{{ row[1] }}</td>
+        <td>{{ row[2] }}</td>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[4] }}</td>
+        <td>{{ row[5] }}</td>
+        <td>{{ row[7] }}</td>
+        <td>{{ row[6] }}</td>
+        <td>{{ row[12] }}</td>
+        <td>{{ row[11] }}</td>
+        <td>{{ row[10] }}</td>
+        <td>{{ row[3] }}</td>
+        <td>{{ row[8] }}</td>
+        <td>{{ row[9] }}</td>
+        <td>{{ row[13] }}</td>
+        <td style="width: 100px">
+            <form method="post" action="{{ url_for('editListing', vehicleId = row[14]) }}">
+                <button name="edit_Listing" value="edit" style="float:left">
+                    <img src="static/Icons/edit.png" style="width:17.5px" align="left">
+                </button>
+            </form>
+            <button data-toggle="modal" data-target="#deleteItem{{ row[14] }}" style="float:right">
+                <img src="static/Icons/bin.png" style="width:17.5px" align="right">
+            </button>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+<!-- Modal -->
+{% for row in data %}
+<div class="modal fade" id="deleteItem{{ row[14] }}" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form method="post" action="{{ url_for('confirmDeleteListing', vehicleId=row[14]) }}">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <center><img src="static/Icons/alert.png" style="width:12%"></center>
+                    <br>
+                    <center><p>Do you want to delete the listing?</p></center>
+                </div>
+                <div class="modal-footer">
+<!--                    <a href="{{ url_for('sellerHome') }}">-->
+                        <input type="submit" class="btn btn-danger" value="Yes">
+<!--                    </a>-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</html>
+{% endblock content %}
